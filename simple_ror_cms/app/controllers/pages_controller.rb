@@ -13,14 +13,11 @@ class PagesController < ApplicationController
   end
 
   def create
-    # Instantiate a new object using form parameters
     @page = Page.new(page_params)
-    # Save the object
+
     if @page.save
-      # If save succeeds, redirect to the index action
       redirect_to(pages_path)
     else
-      # If save fails, redisplay the form so user can fix problems
       render('new')
     end
   end
@@ -51,7 +48,7 @@ class PagesController < ApplicationController
   private
 
     def page_params
-      params.require(:page).permit(
+     params.require(:page).permit(
         :name,
         :visible,
         :position,
@@ -60,5 +57,4 @@ class PagesController < ApplicationController
         :subject_id
       )
     end
-
 end
